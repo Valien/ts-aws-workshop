@@ -1,3 +1,3 @@
-# Headline
+# TS AWS Workshop
 
-> An awesome project.
+> Stuff is happening daily.
