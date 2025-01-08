@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+#  Intro to Tailscale
 
 Let's discover **Docusaurus in less than 50 minutes**.
 

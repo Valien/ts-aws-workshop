@@ -15,28 +15,25 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Tailscale is designed to get you secure remote access without a lot of hassle and configuration.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Zero Trust in Action',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Quickly get going in implementing Zero Trust access
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Built on Wireguard',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Tailscale is built on the <a href="https://www.wireguard.com/">Wireguard</a> project
       </>
     ),
   },
