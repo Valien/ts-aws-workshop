@@ -4,44 +4,39 @@ sidebar_position: 1
 
 #  Intro to Tailscale
 
-Let's discover **Docusaurus in less than 50 minutes**.
+Tailscale is a [secure and private](https://tailscale.com/why-tailscale#secure-and-private), [identity-based](https://tailscale.com/why-tailscale#identity-based), [infrastructure agnostic](https://tailscale.com/why-tailscale#infrastructure-agnostic) network with a [flexible topology](https://tailscale.com/why-tailscale#flexible-topology), [resilient networking](https://tailscale.com/why-tailscale#resilient-networking), and a [streamlined setup](https://tailscale.com/why-tailscale#streamlined-setup).
+
+Whew. What does that all mean? 
+
+* secure and private - Tailscale is built on [Wireguard](https://www.wireguard.com) and is end-to-end encrypted. Your data is never seen by Tailscale.
+* identity-based - Tailscale leverages a users identity for access. It brings users idenity to the network layer versus using an IP address
+* infrastructure agnostic - Tailscale can work with your VM's, containers, bare-metal, Pi's, and more no matter where they are hosted - in the cloud (AWS, Azure, Vultr) or on-prem or on the edge
+* flexible topology - Tailscale is a mesh-based network overlay, use subnet routers, exit nodes, and design your network how you would like it
+* resilent networking - Connect your devices no matter wher they are and across any infrastructure
+* streamlined setup - Setup in minutes and connect servers and systems programmatically
 
 ## Getting Started
 
-Get started by **creating a new site**.
+* You should have received an email from Tailscale with information on creating your Tailnet.
+* If you have not created a tailnet yet then go to https://www.tailscale.com and click the Login button.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+
+![Tailscale Getting Started](/img/tailscale_getting_started.png)
+
+We will not be going over on how to configure your Identity Provider (IdP) for this workshop. But if you want to quickly get going (if you did not pre-register and pre-create your tailnet) then you can use your GitHub or any other public SSO login.
 
 ### What you'll need
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- CLI/Terminal access
+- AWS account access
 
-## Generate a new site
+## Login to Tailscale
 
-Generate a new Docusaurus site using the **classic template**.
+If this is your first time logging in then there will be a wizard to guide you through setting up your first device. Follow the wizard to install Tailscale on your device(s).
 
-The classic template will automatically be added to your project after you run the command:
+If you have already created your initial device then you should be seeing the general `Machines` page in the Tailscale admin panel.
 
-```bash
-npm init docusaurus@latest my-website classic
-```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+## Documentation Links
 
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+You can access the full Tailscale KB here --> https://www.tailscale.com/docs
