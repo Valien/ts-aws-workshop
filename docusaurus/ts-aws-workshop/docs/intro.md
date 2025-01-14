@@ -25,6 +25,31 @@ Whew. What does that all mean?
 
 We will not be going over on how to configure your Identity Provider (IdP) for this workshop. But if you want to quickly get going (if you did not pre-register and pre-create your tailnet) then you can use your GitHub or any other public SSO login.
 
+### Getting Started with AWS Marketplace
+
+You can create a Tailscale account by going to the AWS Marketplace and signing up from there.
+
+* Go to the [AWS Marketplace](https://aws.amazon.com/marketplace/seller-profile?id=seller-w4srvrf4waksi) and search for Tailscale. Click the **Pay as You Go** link.
+
+ ![AWS Tailscale Marketplace](/img/AWS_MP1.png)
+
+ * On the next page click the **Try for Free** link.
+
+ ![AWS Tailscale Try for Free](/img/AWS_MP2.png)
+
+ * Once you're account is provisioned in AWS then follow the link to create your Tailscale account on Tailscale.com
+
+ ![AWS Tailscale Try for Free](/img/AWS_MP3.png)
+
+This video here will also guide you through the sign-up process
+
+<iframe 
+    src="https://www.loom.com/embed/424a23d7c21e46ec9c567520cce9c8e6?sid=978446c8-8975-42f5-99af-f6447ebdf515"
+    width="100%" 
+    height="500" 
+    frameborder="0">
+</iframe>
+
 ### What you'll need
 
 - CLI/Terminal access

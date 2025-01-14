@@ -4,40 +4,18 @@ sidebar_position: 1
 
 # Login to Tailscale
 
-Add **Markdown or React** files to `src/pages` to create a **standalone page**:
+Now that we have our tailnet all created let's dive right into it!
 
-- `src/pages/index.js` → `localhost:3000/`
-- `src/pages/foo.md` → `localhost:3000/foo`
-- `src/pages/foo/bar.js` → `localhost:3000/foo/bar`
+## Login to the Tailscale Web UI
 
-## Create your first React Page
+If you haven't already logged into Tailscale then do so now by clicking the login link on the Tailscale main page.
 
-Create a file at `src/pages/my-react-page.js`:
+![Login to Tailscale](/img/login.png)
 
-```jsx title="src/pages/my-react-page.js"
-import React from 'react';
-import Layout from '@theme/Layout';
+That's it! Welcome to the Tailscale web admin page! 
 
-export default function MyReactPage() {
-  return (
-    <Layout>
-      <h1>My React page</h1>
-      <p>This is a React page</p>
-    </Layout>
-  );
-}
-```
+## Login to the AWS console
 
-A new page is now available at [http://localhost:3000/my-react-page](http://localhost:3000/my-react-page).
+Go ahead and open a new tab or window and login to your AWS account as well. We will be navigating to the AWS console to view our devices as they come up with Tailscale.
 
-## Create your first Markdown Page
-
-Create a file at `src/pages/my-markdown-page.md`:
-
-```mdx title="src/pages/my-markdown-page.md"
-# My Markdown page
-
-This is a Markdown page
-```
-
-A new page is now available at [http://localhost:3000/my-markdown-page](http://localhost:3000/my-markdown-page).
+Congrats! Let's move on to taking a Tour of Tailscale!

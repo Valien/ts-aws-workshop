@@ -4,31 +4,64 @@ sidebar_position: 3
 
 # Tour of Tailscale
 
-Docusaurus creates a **page for each blog post**, but also a **blog index page**, a **tag system**, an **RSS** feed...
+## The Tailscale Web UI
 
-## Create your first Post
+The Tailscale web UI comprises of the following sections **Machines**, **Apps**, **Services**, **Users**, **Access Controls**, **Logs**, **DNS**, and **Settings**. Let's take a look through each section.
 
-Create a file at `blog/2021-02-28-greetings.md`:
 
-```md title="blog/2021-02-28-greetings.md"
----
-slug: greetings
-title: Greetings!
-authors:
-  - name: Joel Marcey
-    title: Co-creator of Docusaurus 1
-    url: https://github.com/JoelMarcey
-    image_url: https://github.com/JoelMarcey.png
-  - name: Sébastien Lorber
-    title: Docusaurus maintainer
-    url: https://sebastienlorber.com
-    image_url: https://github.com/slorber.png
-tags: [greetings]
----
+:::info
 
-Congratulations, you have made your first post!
+Tailscale has some built-in roles that can be assigned to different users. Depending on a users role some of these sections may or may  not be viewable for them.
 
-Feel free to play around and edit this post as much as you like.
-```
+:::
 
-A new blog post is now available at [http://localhost:3000/blog/greetings](http://localhost:3000/blog/greetings).
+### Machines
+
+The [Machines](https://login.tailscale.com/admin/machines) sections lists all devices that are on your tailnet today.
+
+### Apps
+
+The [Apps](https://login.tailscale.com/admin/apps) section shows any applications you have connected to your tailnet using the [App connector](#).
+
+### Services
+
+The [Services](https://login.tailscale.com/admin/services) section (when enabled) shows live services running on your network's machines. 
+
+### Users
+
+The [Users](https://login.tailscale.com/admin/users) section shows current tailscale users and their corresponding roles in the tailnet
+
+roles -
+
+:::info
+
+Tailscale does not store user names and passwords. The users here are created when you login to your Identity Provider (IdP). See this page for more info.
+
+:::
+
+### Access Controls
+
+The [Access controls](https://login.tailscale.com/admin/acls/file) is where you configure, build, and test ACL's for your tailnet.
+
+### Logs
+
+The [Logs](https://login.tailscale.com/admin/logs) is where you can view and access both Configuration logs, and Network Flow logs (if you have it on your plan).
+
+### DNS
+
+This is where all things [DNS](https://login.tailscale.com/admin/dns) lives including Tailscale's MagicDNS feature.
+
+
+### Settings
+
+The [Settings](https://login.tailscale.com/admin/settings/general) page is where you can access personal settings, tailnet settings, and more. Depending on your role you may or may not see all the features available.
+
+## The Tailscale App UI
+
+The Tailscale app, which runs on Apple, Android, Windows, etc looks like this: ![macos app](/img/macapp.png) (The icon, not the color background).
+
+If you click the app it will open up and look similar to what you see here:
+
+![alt text](/img/macapp_open.png)
+
+Feel free to click around and check out the different options.
