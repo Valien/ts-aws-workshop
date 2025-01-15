@@ -1,0 +1,46 @@
+---
+sidebar_position: 5
+---
+
+# Access with Tailscale
+
+Now that the VM is built and connected to your Tailnet. Let's look at it in detail and access it via SSH!
+
+## Machine details
+
+![VM Details](/img/vm-details-1.png)
+
+## Approve Exit node
+
+![VM Details](/img/vm-details-2.png)
+
+![VM Details](/img/vm-details-3.png)
+
+
+## Enable IP Forwarding
+
+https://tailscale.com/kb/1103/exit-nodes?tab=linux
+
+TODO:-- the CF template doesn't set this so you need to SSH and set the forwarding before Exit node traffic will route.
+
+
+## Test exit node
+
+Now that the Exit node has been approved you can access it from your desktop client:
+
+![VM Details](/img/exit-node-1.png)
+
+
+When you are successfully connected it will look like this:
+
+![VM Details](/img/exit-node-2.png)
+
+Notice the little arrow? That shows your device is using the Exit node for all internet traffic.
+
+
+## SSH into VM
+
+Web-based SSH
+
+![VM Details](/img/vm-ssh-1.png)
+
