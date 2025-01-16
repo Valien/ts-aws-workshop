@@ -8,18 +8,100 @@ Now that the VM is built and connected to your Tailnet. Let's look at it in deta
 
 ## Machine details
 
+The following screenshot is typical in what you will see when you look into the details of any tailnet device. 
+
+
 ![VM Details](/img/vm-details-1.png)
 
-## Approve Exit node
+Notice that the `Exit Node` has a `Awaiting approval` message? Just because we set the flag to enable this node to be an exit node we still need to approve it from the admin console.
+
+### Approve Exit node
+
+Go ahead and click the `Edit` link and it will pop open a small window with some details. You'll want to check the `Use as exit node` option and then hit `Save`.
 
 ![VM Details](/img/vm-details-2.png)
 
 ![VM Details](/img/vm-details-3.png)
 
 
+## Tailscale SSH
+
+Before we can set up IP Forwarding on this box we'll need to SSH into it. Because we used Cloud Formation and set the tailscale flag - `--ssh` that means we'll be able to leverage
+Tailscale to SSH into this VM without having to use any PKI infrastructure. Tailscale handles all the SSH key generation and expiration. Pretty cool eh?
+
+You can see our full docs here - https://tailscale.com/kb/1193/tailscale-ssh
+
+If you look at your Machine details you will see that there is an SSH status tag listed.
+
+![SSH Details](/img/tailscale-ssh-1.png)
+
+
+
+This means that we can SSH into this VM if we have the right ACL's set. In this case  we'll be able to SSH because the default Tailscale ACL does allow users to SSH 
+into devices they own.  We'll cover more about ACL's in the next section.
+
+There are 2 ways to SSH into this VM from the Tailscale perspective:
+
+1. You can use the web-based SSH option 
+
+![SSH Details](/img/tailscale-ssh-2.png)
+
+![VM Details](/img/vm-ssh-1.png)
+
+2. Use your local CLI and favorite terminal SSH tool
+
+For today's workshop, let's stick with the web-based SSH option.
+
+* Go ahead and click the **SSH to machine...** button. You'll get a pop-up asking for more details.
+
+* Click the drop-down that shows `root` and select `other`. In the text box put in `ubuntu` as the user. Since this is an Ubuntu VM we'll need to SSH in as the `ubuntu` user instead of the `root` user.
+
+![SSH Details](/img/tailscale-ssh-4.png)
+
+* Click `SSH` next
+
+:::info
+
+Most likely you will be prompted to re-authenticate to your identity provider. Go ahead and sign in again with the same user you are signed into the taiilnet as. This is a security
+feature of Tailscale to verify a users identity before allowing them to access the device itself
+
+:::
+
+After a few seconds you'll be dropped into a web-based SSH terminal!
+
+![SSH Details](/img/tailscale-ssh-5.png)
+
+All based on your IdP identity and not using any public/private keys! 
+
 ## Enable IP Forwarding
 
-https://tailscale.com/kb/1103/exit-nodes?tab=linux
+Now that we're on the box let's setup IP forwarding. This is an Ubuntu VM so it will need the `conf` set in it's `/etc/sysctl.d` directory. 
+
+* Copy the following code block:
+
+```shell 
+echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
+```
+
+* In your web-terminal, paste the block and hit enter.
+* You can verify it wrote the file by running the following:
+
+```bash
+cat /etc/sysctl.d/99-tailscale.conf
+```
+
+    It will return the contents we just pasted.
+
+* Go ahead and exit out of the web-terminal
+
+
+
+Almost there! We need to do 1 more step before we can use this as an Exit node and that is to enable IP Forwarding for this Linux VM.
+
+Here is our documentation page  - https://tailscale.com/kb/1103/exit-nodes?tab=linux and we'll want to scroll down until we get to the **Advertise a device as an exit node** section.
+
 
 TODO:-- the CF template doesn't set this so you need to SSH and set the forwarding before Exit node traffic will route.
 
@@ -37,10 +119,14 @@ When you are successfully connected it will look like this:
 
 Notice the little arrow? That shows your device is using the Exit node for all internet traffic.
 
+Now visit your favorite IP check site and verify your public IP:
 
-## SSH into VM
+- www.ipchicken.com
+- www.whatismyipaddress.com
 
-Web-based SSH
+You should see the Public IP address of the AWS EC2 instance that is shown in the Machine details page.
 
-![VM Details](/img/vm-ssh-1.png)
+By default Tailscale operates as a split-tunnel network. So non-tailscale traffic is routed through your normal ISP but when you turn on the Exit node functionality it will operate 
+as a full-tunnel network and all traffic will route through that exit node.
+
 

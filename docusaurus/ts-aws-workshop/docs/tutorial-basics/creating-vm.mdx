@@ -29,6 +29,12 @@ from the tailnet.
 
 `Exit node` - Let's turn this on. We'll showcase how you can use Tailscale to route your internet traffic through this device.
 
+:::info
+
+We'll also have to add IP Forwarding in a later setup
+
+:::
+
 After checking the flags, read the note and then click **Continue to AWS**. If you have already logged into the AWS console then this will open up a new tab and
 drop you into the Cloud Formation section of AWS with a number of fields pre-filled out.
 
@@ -43,6 +49,8 @@ Let's look at the details before we provision our VM.
 
 The Tailscale Cloud Formation template is still being improved upon. It works fairly well but if you run into any issues with it please let us know!
 
+As of today the AMI that is used is only usable in `us-east-2`. You can change regions, but will need to find an AMI that is in that region before deploying the stack.
+
 :::
 
 ### Parameters
@@ -51,7 +59,7 @@ The Tailscale Cloud Formation template is still being improved upon. It works fa
 * `AuthKey` - this should already be pre-populated.
 * `ExtraArgs` - You can pass more arguments into the startup of Tailscale as needed. For now let's leave `--ssh` as this will allow you to SSH into the EC2 instance after it is configured using Tailscale SSH. Because we also selected the `Exit Node` option on the previous screen we can see the flag listed here - `--advertise-exit-node`
 * `Hostname` - Enter - `TailscaleDemo` or something similar
-* `ImageID` -  Go ahead and leave this as is. This AMI is in `us-east-2`. You can verify an AMI from here - www.amilookup.com
+* `ImageID` -  Go ahead and leave this as is. This AMI is in `us-east-2`. You can verify an AMI from here - www.amilookup.com. If you want to change regions, then make sure to find a suitable AMI that is in that region.
 * `InstanceType` - For today we can leave it as is. Or you can change it to a bigger or smaller instance type as needed.
 * `VpcId` - If you have your own VPCN you can put in it's ID. For the workshop leave it blank so we can use the default VPCN
 * `VpcSubnetId` - Same as above

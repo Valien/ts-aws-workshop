@@ -1,0 +1,14 @@
+---
+sidebar_position: 7
+---
+
+#  Cleanup
+
+Don't forget to cleanup your AWS workspace! If you go into the Cloud Formation section of your AWS console you can click the **Delete** button to remove the Tailscale workshop stack.
+
+![VM Details](/img/tailscale-aws-cleanup-1.png)
+
+
+After a few minutes this CF template will delete the EC2, VPC, and all associated resources. Because we set the device as `Ephemeral` when we first spun it up then Tailscale will also auto-remove the device after a period of inactivity.
+
+If you want to continue testing and playing around with Tailscale, feel free to leave the stack running. But know that you will be billed for any active compute resources by AWS!
