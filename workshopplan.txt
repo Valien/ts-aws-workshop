@@ -1,9 +1,0 @@
-1. intro - pre-req page
-2. logging into tailscale
-3. tailscale admin page walkthrough 
-4 installing tailscale on device (phone, laptop)
-4. using tailscale cloud formation template (link docs)
-5. verify within AWS console
-6. show case ACL
-7. setup ACL and test access
-8. next steps

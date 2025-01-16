@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkts_aws_workshop=self.webpackChunkts_aws_workshop||[]).push([[235],{8552:s=>{s.exports=JSON.parse('{"name":"docusaurus-plugin-content-pages","id":"default"}')}}]);
