@@ -2,27 +2,37 @@
 sidebar_position: 6
 ---
 
-#  ACL's!
+#  ACLs!
 
-The power of Tailscale is handled through it's robust policy engine and powered by the ACL's that are fully customisable.  Let's dig into the ACL section and 
-take a look at the current ACL's.
+The power of Tailscale is handled through it's robust policy engine and powered by fully customisable ACLs (Access Control Lists).  Let's dig into the ACL section and 
+take a look at the current ACLs that your tailnet has by default.
 
 If you haven't already, go ahead and click the **Access controls** tab and you should be seeing page that looks like the following:
 
 ![VM Details](/img/tailscale-acls-1.png)
 
-Tailscale is `deny` by default so only traffic that is permitted is allowed to traverse the network. The default ACL's are pretty permissive because it would be bad for you to be locked out when you 
-first launch Tailscale. But as you build out your network you will want to start to add more ACL's to segment and break up your network.
+Tailscale is `deny` by default so only traffic that is permitted is allowed to traverse the network. The default ACLs are pretty permissive because it would be bad for you to be locked out when you 
+first launch Tailscale. But as you build out your network you will want to start to add more ACLs to segment and break up your network.
 
 Let's take a look at some of the details here.
 
 :::info
 
-This workshop is just scratching the surface of what you can do with ACL's. See the link at the bottom for more examples and details.
+This workshop is just scratching the surface of what you can do with ACLs. See the links at the bottom of this page for more ACL examples.
+
+:::
+
+
+:::tip
+
+If you mess up your default ACL in this workshop, you can copy it from here - https://tailscale.com/kb/1192/acl-samples#allow-all-default-acl
 
 :::
 
 ### Groups
+
+Groups are way to create groups of users that you can then use to assign ACLs versus assigning ACLs to each user indivdually.
+
 ```json
 	// Declare static groups of users. Use autogroups for all users or users with a specific role.
 	 "groups": {
@@ -38,7 +48,7 @@ This workshop is just scratching the surface of what you can do with ACL's. See 
 	 },
 ```
 
-### ACL's
+### ACLs
 
 ```json
 	// Define access control lists for users, groups, autogroups, tags,
@@ -85,8 +95,8 @@ This workshop is just scratching the surface of what you can do with ACL's. See 
 
 ## ACL Documentation and Examples
 
-- Read the [official documentation](https://docusaurus.io/)
-- Modify your site configuration with [`docusaurus.config.js`](https://docusaurus.io/docs/api/docusaurus-config)
+- [Manage Permissions with ACLs](https://https://tailscale.com/kb/1018/acls/)
+- [ACL Groups reference ](https://https://tailscale.com/kb/1337/acl-syntax#groups)
 - Add navbar and footer items with [`themeConfig`](https://docusaurus.io/docs/api/themes/configuration)
 - Add a custom [Design and Layout](https://docusaurus.io/docs/styling-layout)
 - Add a [search bar](https://docusaurus.io/docs/search)

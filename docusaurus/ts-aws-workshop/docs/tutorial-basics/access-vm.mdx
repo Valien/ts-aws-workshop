@@ -37,8 +37,8 @@ If you look at your Machine details you will see that there is an SSH status tag
 
 
 
-This means that we can SSH into this VM if we have the right ACL's set. In this case  we'll be able to SSH because the default Tailscale ACL does allow users to SSH 
-into devices they own.  We'll cover more about ACL's in the next section.
+This means that we can SSH into this VM if we have the right ACLs set. In this case  we'll be able to SSH because the default Tailscale ACL does allow users to SSH 
+into devices they own.  We'll cover more about ACLs in the next section.
 
 There are 2 ways to SSH into this VM from the Tailscale perspective:
 
@@ -89,10 +89,10 @@ sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
 * You can verify it wrote the file by running the following:
 
 ```bash
-cat /etc/sysctl.d/99-tailscale.conf
+sysctl -n net.ipv4.ip_forward net.ipv6.conf.all.forwarding
 ```
 
-    It will return the contents we just pasted.
+ It should return a `1 1` which verifies the values were set and are in a running process. If it returns a `0 0` then check the `99-tailscale.conf` file to make sure the entries were saved.
 
 * Go ahead and exit out of the web-terminal
 
@@ -102,9 +102,12 @@ Almost there! We need to do 1 more step before we can use this as an Exit node a
 
 Here is our documentation page  - https://tailscale.com/kb/1103/exit-nodes?tab=linux and we'll want to scroll down until we get to the **Advertise a device as an exit node** section.
 
+:::info
 
-TODO:-- the CF template doesn't set this so you need to SSH and set the forwarding before Exit node traffic will route.
+The Cloud Formation template will not set the IP forwarding, so you will need to SSH into the EC2 instance to set this up before traffic will 
+route through it as an Exit node
 
+:::
 
 ## Test exit node
 
