@@ -13,25 +13,24 @@ Scroll down to the bottom of the page and click the **Add AWS VM** button.
 
 ![Add AWS VM](/img/tailscale_add_aws-1.png)
 
-This will open up a page with a web form to fill out and after that it will provision an EC2 instance on AWS and auto-join it to your tailnet.
+This will open up a page or a new tab with a small form to fill out and after you submit the information it will provision an EC2 instance on AWS and auto-join it to your tailnet.
 
-Let's break down this page.
-
+Let's dig into the details below!
 
 ## Add AWS VM Details
 
 There are a few things that will need to be filled out here before creating the VM on AWS.
 
-`Tags` - This is an optional flag for the workshop. But we do recommend you leverage tagging for  your devices. It will help with ACL management and access control.
+`Tags` - This is an optional flag for the workshop. But we do recommend you leverage tagging for  your devices. It will help with ACL management and access control. For today, let's turn it **off**.
 
-`Ephemeral` - Let's turn this on for today. Ephemeral means that when the device is disconnected from the Tailnet (i.e. we delete the VM) then Tailscale will clean up and remove the device
-from the tailnet.
+`Ephemeral` - Let's turn this **on** for today. Ephemeral means that when the device is disconnected from the tailnet (i.e. we delete the VM) then Tailscale will clean up and remove the device
+from the tailnet after a certain period of time.
 
-`Exit node` - Let's turn this on. We'll showcase how you can use Tailscale to route your internet traffic through this device.
+`Exit node` - Let's turn this **on**. We'll showcase how you can use Tailscale to route your internet traffic through this device.
 
-:::info
+:::note
 
-We'll also have to add IP Forwarding in a later setup
+We'll also have to add IP Forwarding in a later setup. Stay tuned!
 
 :::
 
@@ -47,22 +46,28 @@ Let's look at the details before we provision our VM.
 
 :::warning
 
-The Tailscale Cloud Formation template is still being improved upon. It works fairly well but if you run into any issues with it please let us know!
+The Tailscale Cloud Formation template is still being improved upon by our engineering team. It works fairly well but if you run into any issues with it please let us know!
 
-As of today the AMI that is used is only usable in `us-east-2`. You can change regions, but will need to find an AMI that is in that region before deploying the stack.
+As of today the AMI that is used is only usable in `us-east-2`. You can change regions, but you will need to find an AMI that is in that specific region before deploying the stack.
 
 :::
 
 ### Parameters
 
-* `Stack name` - Enter the name of the stack. For today let's put in - `Tailscale-AWS-Workshop`
+* `Stack name` - Enter the name of the stack. For today let's put in - `Tailscale-AWS-Workshop`.
 * `AuthKey` - this should already be pre-populated.
-* `ExtraArgs` - You can pass more arguments into the startup of Tailscale as needed. For now let's leave `--ssh` as this will allow you to SSH into the EC2 instance after it is configured using Tailscale SSH. Because we also selected the `Exit Node` option on the previous screen we can see the flag listed here - `--advertise-exit-node`
-* `Hostname` - Enter - `TailscaleDemo` or something similar
+* `ExtraArgs` - You can pass more arguments into the startup of Tailscale as needed. For now let's leave `--ssh` as this will allow you to SSH into the EC2 instance after it is configured using Tailscale SSH. Because we also selected the `Exit Node` option on the previous screen we can see the flag listed here - `--advertise-exit-node`.
+* `Hostname` - Enter - `TailscaleDemo` or something similar.
 * `ImageID` -  Go ahead and leave this as is. This AMI is in `us-east-2`. You can verify an AMI from here - www.amilookup.com. If you want to change regions, then make sure to find a suitable AMI that is in that region.
-* `InstanceType` - For today we can leave it as is. Or you can change it to a bigger or smaller instance type as needed.
-* `VpcId` - If you have your own VPCN you can put in it's ID. For the workshop leave it blank so we can use the default VPCN
-* `VpcSubnetId` - Same as above
+* `InstanceType` - For today we can leave it as is or you can change it to a bigger or smaller instance type as needed. For today's workshop the default is fine.
+* `VpcId` - If you have your own VPC already setup you can put in it's ID. For the workshop leave it blank so we can use the default VPC.
+* `VpcSubnetId` - Same as above.
+
+:::warning
+
+If you change the `VpcId` and `VpcSubnetId` for the workshop, make sure you have an IGW, and a Public subnet so that the EC2 devices can be accessed easier with Tailscale.
+
+:::
 
 ### Permissions
 
@@ -72,17 +77,17 @@ Your template should look like the following:
 
 ![Add AWS VM](/img/tailscale_aws_cf.png)
 
+Once you're satisfied with the inputs, click on **Create stack** and let's watch it build!
+
 ## View CF Details
 
 After you click the Create Stack option you'll see a Cloud Formation page showing the details of the stack being built. What does this stack do?
 
-It builds our an Ubuntu EC2 instance and installs Tailscale on it.
+It builds out an Ubuntu EC2 instance on `us-east-2` with the corresponding networking components and then installs, configures, and joins the EC2 device to your tailnet.
 
 Click the Refresh button to see the status of the build.
 
 ![Add AWS VM](/img/tailscale_cf_details.png)
-
-Once you're satisfied with the inputs, click on **Create stack** and let's watch it build!
 
 :::warning
 

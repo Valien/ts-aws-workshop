@@ -37,26 +37,28 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          routeBasePath: '/',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           //editUrl:
           //  'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
+        blog: false, //{
+          
+          // showReadingTime: true,
+          // feedOptions: {
+          //   type: ['rss', 'atom'],
+          //   xslt: true,
+          //},
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           //editUrl:
           //  'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+          //onInlineTags: 'warn',
+          //onInlineAuthors: 'warn',
+          //onUntruncatedBlogPosts: 'warn',
+        //},
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -66,12 +68,13 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    //image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'Tailscale + AWS Workshop',
       logo: {
         alt: 'Tailscale Logo',
-        src: 'img/logo.svg',
+        //src: 'img/logo.svg',
+        src: 'img/tailscale-logomark-1-no-background.svg',
       },
       items: [
         {
@@ -107,10 +110,6 @@ const config: Config = {
               label: 'Tailscale',
               href: 'https://tailscale.com',
             },
-            // {
-            //   label: 'Discord',
-            //   href: 'https://discordapp.com/invite/docusaurus',
-            // },
             {
               label: 'X',
               href: 'https://x.com/tailscale',
