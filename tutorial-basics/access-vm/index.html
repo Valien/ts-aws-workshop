@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.7.0">
 <title data-rh="true">Access with Tailscale | Tailscale AWS Workshop</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://valien.github.io/ts-aws-workshop/tutorial-basics/access-vm"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Access with Tailscale | Tailscale AWS Workshop"><meta data-rh="true" name="description" content="Now that the VM is built and connected to your Tailnet. Let&#x27;s look at it in detail and access it via SSH!"><meta data-rh="true" property="og:description" content="Now that the VM is built and connected to your Tailnet. Let&#x27;s look at it in detail and access it via SSH!"><link data-rh="true" rel="icon" href="/ts-aws-workshop/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://valien.github.io/ts-aws-workshop/tutorial-basics/access-vm"><link data-rh="true" rel="alternate" href="https://valien.github.io/ts-aws-workshop/tutorial-basics/access-vm" hreflang="en"><link data-rh="true" rel="alternate" href="https://valien.github.io/ts-aws-workshop/tutorial-basics/access-vm" hreflang="x-default"><link rel="stylesheet" href="/ts-aws-workshop/assets/css/styles.1f5e51e0.css">
-<script src="/ts-aws-workshop/assets/js/runtime~main.f958f88e.js" defer="defer"></script>
+<script src="/ts-aws-workshop/assets/js/runtime~main.8cf03760.js" defer="defer"></script>
 <script src="/ts-aws-workshop/assets/js/main.1434502f.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -12,12 +12,12 @@
 <p>Now that the VM is built and connected to your Tailnet. Let&#x27;s look at it in detail and access it via SSH!</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="machine-details">Machine details<a href="#machine-details" class="hash-link" aria-label="Direct link to Machine details" title="Direct link to Machine details">​</a></h2>
 <p>The following screenshot is typical in what you will see when you look into the details of any tailnet device.</p>
-<p><img decoding="async" loading="lazy" alt="VM Details" src="/ts-aws-workshop/assets/images/vm-details-1-7a5be49a27e85ba5fd7fc6010712b7a4.png" width="1195" height="1337" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="VM Details" src="/ts-aws-workshop/assets/images/vm-details-1-104b1c9e22e7cfb23714ebdede0e86ce.png" width="1195" height="1337" class="img_ev3q"></p>
 <p>Notice that the <code>Exit Node</code> has an <code>Awaiting approval</code> message? We set the flag to enable this node to be an exit node when Tailscale was installed but we still need to approve it from the admin console. This is a security feature to prevent users from purposefully adding exit nodes in a network. It requires a Tailscale <code>Admin</code> level role to
 approve it as an exit node before it can be used.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="approve-exit-node">Approve Exit node<a href="#approve-exit-node" class="hash-link" aria-label="Direct link to Approve Exit node" title="Direct link to Approve Exit node">​</a></h3>
 <p>Go ahead and click the <code>Edit</code> link and it will pop open a small window with some details. You&#x27;ll want to check the <code>Use as exit node</code> option and then hit <code>Save</code>.</p>
-<p><img decoding="async" loading="lazy" alt="VM Details" src="/ts-aws-workshop/assets/images/vm-details-2-b1bcf7a35abd17d9242d018e6cd084ee.png" width="626" height="576" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="VM Details" src="/ts-aws-workshop/assets/images/vm-details-2-42fa0941c40bd2f2d13b027cc43b461d.png" width="626" height="576" class="img_ev3q"></p>
 <p><img decoding="async" loading="lazy" alt="VM Details" src="/ts-aws-workshop/assets/images/vm-details-3-8c084ac3d8b3529d15b5266b2d96979d.png" width="509" height="466" class="img_ev3q"></p>
 <p>We have one more step to do before we can use this as an Exit node. Linux devices typically do not have IP Forwarding turned on by default so we will use Tailscale SSH to SSH into this EC2 instance and enable IP Forwarding.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="tailscale-ssh">Tailscale SSH<a href="#tailscale-ssh" class="hash-link" aria-label="Direct link to Tailscale SSH" title="Direct link to Tailscale SSH">​</a></h2>
@@ -25,7 +25,7 @@ approve it as an exit node before it can be used.</p>
 Tailscale to SSH into this VM without having to use any PKI infrastructure. Tailscale handles all the SSH key generation and expiration. Pretty cool eh?</p>
 <p>You can learn more about Tailscale SSH <a href="https://tailscale.com/kb/1193/tailscale-ssh" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <p>If you look at your Machine details you will see that there is an SSH status tag listed.</p>
-<p><img decoding="async" loading="lazy" alt="SSH Details" src="/ts-aws-workshop/assets/images/tailscale-ssh-1-7c05b51fd2bd0d4d4f3e7c55da030610.png" width="405" height="145" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="SSH Details" src="/ts-aws-workshop/assets/images/tailscale-ssh-1-c661a40d80d305091660070f3a90c70a.png" width="405" height="145" class="img_ev3q"></p>
 <p>This means that we can SSH into this VM if we have the right ACLs set. In this case  we&#x27;ll be able to SSH because the default Tailscale ACL does allow users to SSH
 into devices they own.  We&#x27;ll cover more about ACLs in the next section.</p>
 <p>There are 2 ways to SSH into this VM from the Tailscale perspective:</p>
@@ -33,7 +33,7 @@ into devices they own.  We&#x27;ll cover more about ACLs in the next section.</p
 <li>You can use the web-based SSH option</li>
 </ol>
 <p><img decoding="async" loading="lazy" alt="SSH Details" src="/ts-aws-workshop/assets/images/tailscale-ssh-2-5b255932748e8f7ca3d479c4c450af28.png" width="862" height="101" class="img_ev3q"></p>
-<p><img decoding="async" loading="lazy" alt="VM Details" src="/ts-aws-workshop/assets/images/vm-ssh-1-1efd5866ef71769494311c2bc36c1fc2.png" width="1143" height="218" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="VM Details" src="/ts-aws-workshop/assets/images/vm-ssh-1-d4ce9bccb7d63abdd408119b0bf7b02b.png" width="1143" height="218" class="img_ev3q"></p>
 <ol start="2">
 <li>Use your local CLI and favorite terminal SSH tool</li>
 </ol>
@@ -76,9 +76,9 @@ route through it as an Exit node</p></div></div>
 <p>Ok! We should be able to use this EC2 instance as an Exit node now!</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="test-exit-node">Test exit node<a href="#test-exit-node" class="hash-link" aria-label="Direct link to Test exit node" title="Direct link to Test exit node">​</a></h2>
 <p>Now that the Exit node has been approved you can access it from your desktop client:</p>
-<p><img decoding="async" loading="lazy" alt="VM Details" src="/ts-aws-workshop/assets/images/exit-node-1-4a70c4c8d36ce5ea8d34b85ffc5d9f26.png" width="528" height="358" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="VM Details" src="/ts-aws-workshop/assets/images/exit-node-1-49c55cff083a00e809c4f08f5431232b.png" width="528" height="358" class="img_ev3q"></p>
 <p>When you are successfully connected it will look like this:</p>
-<p><img decoding="async" loading="lazy" alt="VM Details" src="/ts-aws-workshop/assets/images/exit-node-2-d7fb282d949c2953dc164b713abfebda.png" width="537" height="348" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="VM Details" src="/ts-aws-workshop/assets/images/exit-node-2-50c36609d7ef81c86e38e72769f5c175.png" width="537" height="348" class="img_ev3q"></p>
 <p>Notice the little arrow? That shows your device is using the Exit node for all internet traffic.</p>
 <p>Now visit your favorite IP check site and verify your public IP:</p>
 <ul>
